@@ -1,0 +1,134 @@
+package learnJava;
+import java.util.*;
+import javafx.*;
+
+
+public class Execute
+{
+	//scanner for the input of the grams of macronutrients
+	 public static Scanner reader = new Scanner(System.in);
+	 
+	 public static double gramProtein;
+	 public static double caloriesFromProtein;
+	 public static double gramCarbohydrate;
+	 public static double caloriesFromCarbohydrate;
+	 public static double gramFat;
+	 public static double caloriesFromFat;
+	 public static double totalCalories; 
+	 public static double percentProtein;
+	 public static double percentCarbohydrate;
+	 public static double percentFat;
+	
+	 //main function to run the functions 
+	public static void main(String[] args)
+	{
+		//call to the protein conversion function 
+		ProteinConverter.proteinCalculator();
+	
+		//call to the carbohydrate conversion function 
+		carbohydrate.carbohydrateCalculator();
+		
+		//call to the fat conversion function 
+		Fat.fatCalculator();
+		
+		//call to the total sum function for all sources of calories 
+		total.totalCalculator(caloriesFromProtein, caloriesFromCarbohydrate, caloriesFromFat);
+		
+		//call to the ratio functions (calories from macro/total calories) * 100.00
+		MacroPercentage.proteinRatio(caloriesFromProtein, totalCalories);
+		MacroPercentage.carbohydrateRatio(caloriesFromCarbohydrate, totalCalories);
+		MacroPercentage.fatRatio(caloriesFromFat, totalCalories);
+
+public class ProteinConverter extends Execute 
+{
+	//multiplies user input of grams protein by 4 --> convert to calories
+	public static void proteinCalculator()
+	{
+		System.out.println("How many grams of protein have you had today? ");
+		//takes the users reported grams of protein 
+		 gramProtein = reader.nextInt();
+		 //converts user input to calories 
+		caloriesFromProtein = gramProtein * 4.0;
+		System.out.println(gramProtein + " grams of protein");
+		System.out.println("You have eaten " + caloriesFromProtein + " calories from protein today. ");
+	}
+}
+
+public class carbohydrate extends Execute
+{
+
+	public static void carbohydrateCalculator() 
+	{
+		//multiplies user input of grams carbohydrates by 4 --> convert to calories
+		System.out.println("How many grams of carbohydrates have you had today? ");
+	
+		//takes the users reported grams of protein 
+		gramCarbohydrate = reader.nextInt();
+	 
+		//converts user input to calories 
+		caloriesFromCarbohydrate = gramCarbohydrate * 4.0;
+		System.out.println(gramProtein + " grams of carbohydrates");
+		System.out.println("You have eaten " + caloriesFromCarbohydrate + " calories from carbohydrates today. ");
+	}
+}
+
+public class Fat extends Execute 
+{
+	//multiplies user input of grams fat by 9 --> convert to calories
+	public static void fatCalculator()
+	{
+		{
+			//multiplies user input of grams fat by 9 --> convert to calories
+			System.out.println("How many grams of fat have you had today? ");
+		
+			//takes the users reported grams of fat 
+			gramFat = reader.nextInt();
+		 
+			//converts user input to calories 
+			caloriesFromFat = gramFat * 9.0;
+			System.out.println(gramFat + " grams of fats");
+			System.out.println("You have eaten " + caloriesFromFat + " calories from fat today. ");
+		}
+	}
+}
+
+public class total extends Execute
+{
+	//calculates the total amount of calories consumed by sum of calories; based on conversions from grams to calories 
+	public static void totalCalculator(double caloriesFromProtein, double caloriesFromCarbohydrate, double caloriesFromFat)
+	{
+		totalCalories = caloriesFromProtein + caloriesFromCarbohydrate + caloriesFromFat; 
+		System.out.println("You have eaten a total of " + totalCalories + " calories today. ");
+	}
+}
+
+public class MacroPercentage extends Execute
+{
+	//calculates ratio of carbohydrate calories to daily calories 
+	public static void proteinRatio(double caloriesFromProtein, double totalCalories)
+	{
+		
+		percentProtein = (caloriesFromProtein/totalCalories)* 100.0;
+		System.out.printf("Your percentage of daily protein intake = " + "%.2f" ,percentProtein);
+		System.out.println();
+	}
+	
+	//calculates ratio of carbohydrate calories to daily calories 
+	public static void carbohydrateRatio(double caloriesFromCarbohydrate, double totalCalories)
+	{
+		percentCarbohydrate = (caloriesFromCarbohydrate/totalCalories)* 100.0;
+		System.out.printf("Your percentage of daily carbohydrate intake = " + "%.2f" ,percentCarbohydrate);
+		System.out.println();
+		
+	}
+	
+	//calculates ratio of fat calories to daily calories
+	public static void fatRatio(double caloriesFromFat, double totalCalories)
+	{
+		percentFat = (caloriesFromFat/ totalCalories)*100.0;
+		System.out.printf("Your percentage of daily fat intake = " + "%.2f" ,percentFat);
+		System.out.println();
+	}
+}
+
+		
